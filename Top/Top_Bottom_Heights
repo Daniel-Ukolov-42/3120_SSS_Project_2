@@ -1,0 +1,58 @@
+# Commented Code to create dataframes usind Web_Scrape Branch function
+
+'''
+mens_swimming_df = average_height(sports_teams['mens_swimming'])
+mens_volleyball_df = average_height(sports_teams['mens_volleyball'])
+womens_swimming_df = average_height(sports_teams['womens_swimming'])
+womens_volleyball_df = average_height(sports_teams['womens_volleyball'])
+
+print(mens_swimming_df.shape)
+print(mens_volleyball_df.shape)
+print(womens_swimming_df.shape)
+print(womens_volleyball_df.shape)
+
+print(mens_swimming_df.head())
+print(mens_volleyball_df.head())
+print(womens_swimming_df.head())
+print(womens_volleyball_df.head())
+'''
+
+
+# Code to extract tallest and shortest player names/heights
+
+# Get 5 tallest and 5 shortest
+def get_tallest_and_shortest(df, gender, sport):
+    tallest = df[df['Height'] >= df['Height'].nlargest(5).min()][['Name', 'Height']]
+    shortest = df[df['Height'] <= df['Height'].nsmallest(5).max()][['Name', 'Height']]
+    return tallest, shortest
+
+# Extract tallest and shortest
+tallest_men_swim, shortest_men_swim = get_tallest_and_shortest(mens_swimming_df, 'Men', 'Swimming')
+tallest_men_volley, shortest_men_volley = get_tallest_and_shortest(mens_volleyball_df, 'Men', 'Volleyball')
+tallest_women_swim, shortest_women_swim = get_tallest_and_shortest(womens_swimming_df, 'Women', 'Swimming')
+tallest_women_volley, shortest_women_volley = get_tallest_and_shortest(womens_volleyball_df, 'Women', 'Volleyball')
+
+# Print results
+print("Tallest Men's Swimming:")
+print(tallest_men_swim.to_string(index=False), end='\n\n')
+
+print("Tallest Men's Volleyball:")
+print(tallest_men_volley.to_string(index=False), end='\n\n')
+
+print("Tallest Women's Swimming:")
+print(tallest_women_swim.to_string(index=False), end='\n\n')
+
+print("Tallest Women's Volleyball:")
+print(tallest_women_volley.to_string(index=False), end='\n\n')
+
+print("Shortest Men's Swimming:")
+print(shortest_men_swim.to_string(index=False), end='\n\n')
+
+print("Shortest Men's Volleyball:")
+print(shortest_men_volley.to_string(index=False), end='\n\n')
+
+print("Shortest Women's Swimming:")
+print(shortest_women_swim.to_string(index=False), end='\n\n')
+
+print("Shortest Women's Volleyball:")
+print(shortest_women_volley.to_string(index=False), end='\n\n')
