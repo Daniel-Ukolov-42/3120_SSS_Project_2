@@ -13,3 +13,17 @@ avg_height_womens_swim
 avg_height_womens_volley = womens_volley_df['Height'].mean()
 avg_height_womens_volley
 
+
+# Dictionary: {'Team', 'Avg Height'}
+avg_data = {
+              'Team' : ['Mens Swim Team', 'Mens Volleyball Team', 'Womens Swim Team', 'Womens Volleyball Team'],
+              'Avg Height' : [avg_height_mens_swim , avg_height_mens_volley, avg_height_womens_swim, avg_height_womens_volley]
+           }
+
+# Convert the dictionary to DF
+avg_data_df = pd.DataFrame(avg_data)
+avg_data_df
+
+# Bar Graph
+avg_data_df.plot.bar(x='Team', y = 'Avg Height', title='Avg Heights Among Athletes')
+plt.show()
