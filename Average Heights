@@ -1,0 +1,15 @@
+avg_height_mens_swim = mens_swim_df['Height'].mean()
+avg_height_mens_swim
+
+
+avg_height_mens_volley = mens_volley_df['Height'].mean()
+avg_height_mens_volley
+
+
+avg_height_womens_swim = womens_swim_df['Height'].mean()
+avg_height_womens_swim
+
+
+avg_height_womens_volley = womens_volley_df['Height'].mean()
+avg_height_womens_volley
+
