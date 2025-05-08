@@ -3,20 +3,20 @@
 # Commented Code to create dataframes usind Web_Scrape Branch function
 
 '''
-mens_swimming_df = web_scrape(sports_teams['mens_swimming'])
-mens_volleyball_df = web_scrape(sports_teams['mens_volleyball'])
-womens_swimming_df = web_scrape(sports_teams['womens_swimming'])
-womens_volleyball_df = web_scrape(sports_teams['womens_volleyball'])
+mens_swim_df = web_scrape(sports_teams['mens_swimming'])
+mens_volley_df = web_scrape(sports_teams['mens_volleyball'])
+womens_swim_df = web_scrape(sports_teams['womens_swimming'])
+womens_volley_df = web_scrape(sports_teams['womens_volleyball'])
 
-print(mens_swimming_df.shape)
-print(mens_volleyball_df.shape)
-print(womens_swimming_df.shape)
-print(womens_volleyball_df.shape)
+print(mens_swim_df.shape)
+print(mens_volley_df.shape)
+print(womens_swim_df.shape)
+print(womens_volley_df.shape)
 
-print(mens_swimming_df.head())
-print(mens_volleyball_df.head())
-print(womens_swimming_df.head())
-print(womens_volleyball_df.head())
+print(mens_swim_df.head())
+print(mens_volley_df.head())
+print(womens_swim_df.head())
+print(womens_volley_df.head())
 '''
 
 
@@ -29,10 +29,10 @@ def get_tallest_and_shortest(df, gender, sport):
     return tallest, shortest
 
 # Extract tallest and shortest
-tallest_men_swim, shortest_men_swim = get_tallest_and_shortest(mens_swimming_df, 'Men', 'Swimming')
-tallest_men_volley, shortest_men_volley = get_tallest_and_shortest(mens_volleyball_df, 'Men', 'Volleyball')
-tallest_women_swim, shortest_women_swim = get_tallest_and_shortest(womens_swimming_df, 'Women', 'Swimming')
-tallest_women_volley, shortest_women_volley = get_tallest_and_shortest(womens_volleyball_df, 'Women', 'Volleyball')
+tallest_men_swim, shortest_men_swim = get_tallest_and_shortest(mens_swim_df, 'Men', 'Swimming')
+tallest_men_volley, shortest_men_volley = get_tallest_and_shortest(mens_volley_df, 'Men', 'Volleyball')
+tallest_women_swim, shortest_women_swim = get_tallest_and_shortest(womens_swim_df, 'Women', 'Swimming')
+tallest_women_volley, shortest_women_volley = get_tallest_and_shortest(womens_volley_df, 'Women', 'Volleyball')
 
 # Print results
 print("Tallest Men's Swimming:")
