@@ -15,7 +15,7 @@ sports_teams = {
 
 
 
-def average_height(url_list):
+def web_scrape(url_list):
 
   # list to store heights
   heights = []
