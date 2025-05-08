@@ -1,12 +1,12 @@
-# Need to import function
+# Need to import function web_scrape
 
 # Commented Code to create dataframes usind Web_Scrape Branch function
 
 '''
-mens_swimming_df = average_height(sports_teams['mens_swimming'])
-mens_volleyball_df = average_height(sports_teams['mens_volleyball'])
-womens_swimming_df = average_height(sports_teams['womens_swimming'])
-womens_volleyball_df = average_height(sports_teams['womens_volleyball'])
+mens_swimming_df = web_scrape(sports_teams['mens_swimming'])
+mens_volleyball_df = web_scrape(sports_teams['mens_volleyball'])
+womens_swimming_df = web_scrape(sports_teams['womens_swimming'])
+womens_volleyball_df = web_scrape(sports_teams['womens_volleyball'])
 
 print(mens_swimming_df.shape)
 print(mens_volleyball_df.shape)
