@@ -1,0 +1,40 @@
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+
+# top 100 weekly songs 
+def scrape_billboard_top_30():
+    url = "https://www.billboard.com/charts/hot-100/"
+    headers = {"User-Agent": "Mozilla/5.0"}
+    response = requests.get(url, headers=headers)
+    soup = BeautifulSoup(response.content, "html.parser")
+
+    titles = []
+    artists = []
+
+    chart_items = soup.select("li.o-chart-results-list__item h3.c-title")
+    
+    # first (top) 30 songs
+    for idx, title_tag in enumerate(chart_items):
+        if len(titles) >= 30:
+            break
+        title = title_tag.get_text(strip=True)
+        parent_li = title_tag.find_parent("li")
+        artist_tag = parent_li.select_one("span.c-label")
+        artist = artist_tag.get_text(strip=True) if artist_tag else "Unknown"
+        titles.append(title)
+        artists.append(artist)
+
+    top_30 = pd.DataFrame({
+        "Song Title": titles,
+        "Artist": artists
+    })
+
+    # set index to start at 1 instead of 0 for consistancy with song rank
+    top_30.index = top_30.index + 1
+
+    return top_30
+
+# show df 
+top_30 = scrape_billboard_top_30()
+print(top_30)
