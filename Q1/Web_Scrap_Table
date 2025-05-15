@@ -14,9 +14,10 @@ def scrape_billboard_top_30():
 
     chart_items = soup.select("li.o-chart-results-list__item h3.c-title")
     
-    # first (top) 30 songs
+    # first (top) 31 songs
+    # API missing data for 1 song so we will grab an extra song
     for idx, title_tag in enumerate(chart_items):
-        if len(titles) >= 30:
+        if len(titles) >= 31:
             break
         title = title_tag.get_text(strip=True)
         parent_li = title_tag.find_parent("li")
