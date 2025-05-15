@@ -1,6 +1,6 @@
 import sqlite3
 
-# Connect to SQLite database (will create the file if it doesn't exist)
+# Connect to SQLite database 
 conn = sqlite3.connect('athlete_heights.db')
 cursor = conn.cursor()
 
@@ -55,18 +55,6 @@ for _, row in womens_volley_df.iterrows():
 # Commit the inserts
 conn.commit()
 
-# Optionally, verify one of the tables
-cursor.execute("SELECT * FROM mens_swimming")
-print(cursor.fetchall())
-
-cursor.execute("SELECT * FROM mens_volleyball")
-print(cursor.fetchall())
-
-cursor.execute("SELECT * FROM womens_swimming")
-print(cursor.fetchall())
-
-cursor.execute("SELECT * FROM womens_volleyball")
-print(cursor.fetchall())
 
 #Add 'teams' column to df
 tables = {
