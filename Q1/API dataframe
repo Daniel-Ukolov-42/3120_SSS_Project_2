@@ -1,0 +1,58 @@
+#API key
+LASTFM_API_KEY = "813832b37b827ebcbe21d253c7859bcf"
+
+#getting the track info from last fm api
+def get_lastfm_track_info(artist, track):
+    base_url = "http://ws.audioscrobbler.com/2.0/"
+    params = {
+        "method": "track.getInfo",
+        "api_key": "813832b37b827ebcbe21d253c7859bcf",
+        "artist": artist,
+        "track": track,
+        "format": "json"
+    }
+    
+    response = requests.get(base_url, params=params)
+    
+    if response.status_code != 200:
+        print(f"[ERROR] Failed to get {track} ({artist}), status {response.status_code}")
+        return None
+
+    data = response.json().get("track")
+    if not data:
+        print(f"[WARNING] No data for {artist} - {track}")
+        return None
+
+    return {
+        "Listeners": data.get("listeners"),
+        "Playcount": data.get("playcount"),
+        "Duration (ms)": data.get("duration"),
+        "Album": data.get("album", {}).get("title"),
+        "Tags": ", ".join([tag["name"] for tag in data.get("toptags", {}).get("tag", [])][:3]),  # top 3 tags
+        "Summary": data.get("wiki", {}).get("summary", "")[:100]  # optional: short description
+    }
+
+# function to build df2 from top30 df
+def build_df2_from_lastfm(df1):
+    rows = []
+    for idx, row in df1.iterrows():
+        artist = row["Artist"]
+        title = row["Song Title"]
+        info = get_lastfm_track_info(artist, title)
+        if info:
+            rows.append(info)
+        else:
+            rows.append({
+                "Listeners": None,
+                "Playcount": None,
+                "Duration (ms)": None,
+                "Album": None,
+                "Tags": None,
+                "Summary": None
+            })
+        time.sleep(0.25)  #sleep to pause the calls to ensure my requests arent denied
+
+    return pd.DataFrame(rows)
+
+df2 = build_df2_from_lastfm(top_30) 
+df2
