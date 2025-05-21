@@ -2,7 +2,6 @@
 from Web_Scrape import web_scrape, sports_teams  
 # Commented Code to create dataframes usind Web_Scrape Branch function
 
-'''
 mens_swim_df = web_scrape(sports_teams['mens_swimming'])
 mens_volley_df = web_scrape(sports_teams['mens_volleyball'])
 womens_swim_df = web_scrape(sports_teams['womens_swimming'])
@@ -17,8 +16,14 @@ print(mens_swim_df.head())
 print(mens_volley_df.head())
 print(womens_swim_df.head())
 print(womens_volley_df.head())
-'''
 
+# Export each dataframe to its own CSV
+mens_swim_df.to_csv("mens_swim.csv", index=False)
+mens_volley_df.to_csv("mens_volleyball.csv", index=False)
+womens_swim_df.to_csv("womens_swim.csv", index=False)
+womens_volley_df.to_csv("womens_volleyball.csv", index=False)
+
+print("CSV exports saved")
 
 # Code to extract tallest and shortest player names/heights
 
