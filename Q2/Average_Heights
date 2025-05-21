@@ -1,5 +1,5 @@
 from matplotlib import pyplot as plt
-
+#Finding the avg height for each swim roster 
 avg_height_mens_swim = mens_swim_df['Height'].mean()
 avg_height_mens_swim
 
