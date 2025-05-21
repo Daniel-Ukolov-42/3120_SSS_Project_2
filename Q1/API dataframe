@@ -53,6 +53,11 @@ def build_df2_from_lastfm(df1):
         time.sleep(0.25)  #sleep to pause the calls to ensure my requests arent denied
 
     return pd.DataFrame(rows)
-
+#Building dataframe 2 that calls api to recieve info on the top 30 songs
 df2 = build_df2_from_lastfm(top_30) 
 df2
+
+#merging both dataframes 
+df3 = pd.concat([top_30.reset_index(), df2], axis=1)
+df3.to_csv("billboard_lastfm_enriched.csv", index=False)
+df3
