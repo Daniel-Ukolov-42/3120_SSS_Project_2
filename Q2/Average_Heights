@@ -1,3 +1,5 @@
+from matplotlib import pyplot as plt
+
 avg_height_mens_swim = mens_swim_df['Height'].mean()
 avg_height_mens_swim
 
