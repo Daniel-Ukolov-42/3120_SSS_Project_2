@@ -1,5 +1,5 @@
 # Need to import function web_scrape
-
+from Web_Scrape import web_scrape, sports_teams  
 # Commented Code to create dataframes usind Web_Scrape Branch function
 
 '''
