@@ -1,3 +1,4 @@
+import sqlite3
 # Need to import function web_scrape
 from Q2.Web_Scrape import web_scrape, sports_teams 
 # Commented Code to create dataframes usind Web_Scrape Branch function
@@ -64,4 +65,21 @@ print(shortest_women_swim.to_string(index=False), end='\n\n')
 print("Shortest Women's Volleyball:")
 print(shortest_women_volley.to_string(index=False), end='\n\n')
 
-# MIA PASTE SQL CODE HERE 
+
+# SQL 
+# connect to SQLite database 
+conn = sqlite3.connect("athlete_data.db")
+
+# save each DF to a separate table in the database
+mens_swim_df.to_sql("mens_swimming", conn, if_exists="replace", index=False)
+mens_volley_df.to_sql("mens_volleyball", conn, if_exists="replace", index=False)
+womens_swim_df.to_sql("womens_swimming", conn, if_exists="replace", index=False)
+womens_volley_df.to_sql("womens_volleyball", conn, if_exists="replace", index=False)
+
+# list all tables to confirm
+cursor = conn.cursor()
+cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+print("Tables in database:", cursor.fetchall())
+
+# close connection
+conn.close()
