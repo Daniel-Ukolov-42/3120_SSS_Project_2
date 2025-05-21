@@ -1,5 +1,5 @@
 # Need to import function web_scrape
-from Web_Scrape import web_scrape, sports_teams  
+from Q2.Web_Scrape import web_scrape, sports_teams 
 # Commented Code to create dataframes usind Web_Scrape Branch function
 
 mens_swim_df = web_scrape(sports_teams['mens_swimming'])
