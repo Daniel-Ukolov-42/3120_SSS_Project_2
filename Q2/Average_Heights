@@ -1,3 +1,11 @@
+#Importing the necessary dataframes from Top_Bottom heights
+import pandas as pd
+from Q2.Top_Bottom_Heights import (
+    mens_swim_df,
+    mens_volley_df,
+    womens_swim_df,
+    womens_volley_df
+)
 from matplotlib import pyplot as plt
 #Finding the avg height for each swim roster 
 avg_height_mens_swim = mens_swim_df['Height'].mean()
