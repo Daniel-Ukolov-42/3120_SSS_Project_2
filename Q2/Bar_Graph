@@ -1,3 +1,5 @@
+from matplotlib import pyplot as plt
+
 #dataframe for the mens swim 
 mens_swim_df = web_scrape(sports_teams['mens_swimming'])
 mens_swim_df
