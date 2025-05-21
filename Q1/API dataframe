@@ -1,3 +1,5 @@
+import time
+
 #API key
 LASTFM_API_KEY = "813832b37b827ebcbe21d253c7859bcf"
 
