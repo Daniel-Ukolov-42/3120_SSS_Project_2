@@ -1,4 +1,8 @@
 import time
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+from Q1.Web_Scrap_Table import top_30
 
 #API key
 LASTFM_API_KEY = "813832b37b827ebcbe21d253c7859bcf"
