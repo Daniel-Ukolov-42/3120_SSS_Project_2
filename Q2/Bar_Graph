@@ -1,17 +1,1 @@
-from matplotlib import pyplot as plt
-
-#dataframe for the mens swim 
-mens_swim_df = web_scrape(sports_teams['mens_swimming'])
-mens_swim_df
-
-#dataframe for the mens volleyball 
-mens_volley_df = web_scrape(sports_teams['mens_volleyball'])
-mens_volley_df
-
-#dataframe for the women's swim 
-womens_swim_df = web_scrape(sports_teams['womens_swimming'])
-womens_swim_df
-
-#dataframe for the womens volleyball 
-womens_volley_df = web_scrape(sports_teams['womens_volleyball'])
-womens_volley_df
+#accidental folder creation 
