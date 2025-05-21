@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 from Q1.Web_Scrap_Table import top_30
+import sqlite3
 
 #API key
 LASTFM_API_KEY = "813832b37b827ebcbe21d253c7859bcf"
@@ -68,4 +69,20 @@ df3 = pd.concat([top_30.reset_index(), df2], axis=1)
 df3.to_csv("billboard_lastfm_enriched.csv", index=False)
 df3
 
-# MIA PASTE SQL CODE HERE
+#SQL 
+# connect to SQLite database 
+conn = sqlite3.connect("music_data.db")
+
+# save the enriched dataframe to the SQL database
+df3.to_sql("top_songs_enriched", conn, if_exists="replace", index=False)
+
+# confirm the table was created
+cursor = conn.cursor()
+cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+print("Tables in database:", cursor.fetchall())
+
+# preview some data
+cursor.execute("SELECT * FROM top_songs_enriched LIMIT 30;")
+for row in cursor.fetchall():
+    print(row)
+conn.close()
