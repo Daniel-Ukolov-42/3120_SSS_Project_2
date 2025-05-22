@@ -68,6 +68,7 @@ df2
 df3 = pd.concat([top_30.reset_index(), df2], axis=1)
 df3.to_csv("billboard_lastfm_enriched.csv", index=False)
 df3
+print(df3.describe())
 
 #SQL 
 # connect to SQLite database 
